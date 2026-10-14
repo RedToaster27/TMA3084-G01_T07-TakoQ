@@ -22,7 +22,7 @@ TakoQ is a Software Engineering Lab project developed by G01_T07.
 
 **Project Management**
 
-- **Trello Board:**https://trello.com/invite/b/6accdb319309a6924ef4938e/ATTIc359ca26358e23fc78a2c77193c1280d5A1B8A98/tma3084-g01t07-rztako
+- **Trello Board:** https://trello.com/invite/b/6accdb319309a6924ef4938e/ATTIc359ca26358e23fc78a2c77193c1280d5A1B8A98/tma3084-g01t07-rztako
 
 **Technology Stack**
 
