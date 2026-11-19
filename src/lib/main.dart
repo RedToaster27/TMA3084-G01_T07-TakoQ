@@ -3,18 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/customer_board_screen.dart';
 import 'screens/kitchen_screen.dart';
 import 'screens/new_order_screen.dart';
-
 void main() {
   runApp(const ProviderScope(child: TakoQApp()));
 }
-
 class TakoQApp extends StatelessWidget {
   const TakoQApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TakoQ Demo',
+      title: 'TakoQ Demo 1',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -25,21 +22,17 @@ class TakoQApp extends StatelessWidget {
           surface: const Color(0xFFF7F4EF),
         ),
       ),
-      home: const _TempShell(),
+      home: const DemoShell(),
     );
   }
 }
-
-class _TempShell extends StatefulWidget {
-  const _TempShell();
-
+class DemoShell extends StatefulWidget {
+  const DemoShell({super.key});
   @override
-  State<_TempShell> createState() => _TempShellState();
+  State<DemoShell> createState() => _DemoShellState();
 }
-
-class _TempShellState extends State<_TempShell> {
+class _DemoShellState extends State<DemoShell> {
   int index = 0;
-
   @override
   Widget build(BuildContext context) {
     final pages = [
@@ -47,16 +40,40 @@ class _TempShellState extends State<_TempShell> {
       const KitchenScreen(),
       const CustomerBoardScreen(),
     ];
-
     return Scaffold(
       body: pages[index],
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
-        onDestinationSelected: (i) => setState(() => index = i),
+        onDestinationSelected: (i) {
+          if (i == 3) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  'Search — Coming soon (Demo 1 out of scope)',
+                ),
+              ),
+            );
+            return;
+          }
+          setState(() => index = i);
+        },
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.add), label: 'New Order'),
-          NavigationDestination(icon: Icon(Icons.list_alt), label: 'Kitchen'),
-          NavigationDestination(icon: Icon(Icons.tv), label: 'Board'),
+          NavigationDestination(
+            icon: Icon(Icons.add_circle_outline),
+            label: 'New Order',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.list_alt),
+            label: 'Kitchen',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.tv),
+            label: 'Board',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
         ],
       ),
     );
